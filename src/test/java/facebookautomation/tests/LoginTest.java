@@ -25,14 +25,19 @@ public class LoginTest extends Settings {
 	 */
 	@Test
 	public void loginTest () {
-		// TODO Auto-generated constructor stub
+
+		final String usrName = "userName@gmail.com "; // Enter FB UserName here.
+		final String password = "Password"; // Enter FB Password here.
+		final String title = "Facebook";
+		final String fbPost = "This is the Status posted via Test 1"; // Enter your FB Status here.
 
 		try {
 			final FbLoginPage fblgn = new FbLoginPage (this.driver);
-			fblgn.fbLogin ("username", "password"); // Enter your FB Username and Password Here!
+			fblgn.fbLogin (usrName, password);
 			final String text = this.driver.getTitle ();
 			System.out.println ("Text is:" + text);
-			if (text.equals ("Facebook")) {
+
+			if (text.equals (title)) {
 				System.out.println ("Login Successful!!");
 
 			}
@@ -47,11 +52,10 @@ public class LoginTest extends Settings {
 		}
 
 		final FbPostStatus pstatus = new FbPostStatus (this.driver);
-		pstatus.postStatus ("Test Run by Bot9 #fk!!"); //Enter the text you want to post as your FB Status!
+		pstatus.postStatus (fbPost);
 
 		final FbCheckStatus postChk = new FbCheckStatus (this.driver);
 		postChk.checkStatus ();
-
 		final FbLogOut fbl = new FbLogOut (this.driver);
 		fbl.logOutFb ();
 		System.out.println ("LogOut Successful");

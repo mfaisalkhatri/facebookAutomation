@@ -15,31 +15,31 @@ public class FbPostStatus {
 	private final WebDriver driver;
 
 	public FbPostStatus (final WebDriver driver) {
-		// TODO Auto-generated constructor stub
-
 		this.driver = driver;
 	}
 
-	/**
-	 * This Method is used to update FB Status!!
-	 *
-	 * @param Status
-	 * @since 20-Aug-2017 11:29:03 AM
-	 */
-	public void postStatus (final String Status) {
+	public void postStatus (final String status) {
 
-		final WebDriverWait wait = new WebDriverWait (this.driver, 20);
+		final WebDriverWait wait = new WebDriverWait (this.driver, 10);
 		final By statbx = By.id ("pagelet_composer");
-		final WebElement statsbox = this.driver.findElement (statbx);
+		WebElement statsbox = this.driver.findElement (statbx);
 
 		final By statusbox = By.name ("xhpc_message");
+
 		final WebElement sbx = statsbox.findElement (statusbox);
-		final Actions action = new Actions (this.driver);
-		action.moveToElement (sbx)
-			.click ()
-			.sendKeys (Status)
-			.build ()
-			.perform ();
+
+		sbx.click ();
+
+		final By editBox = By.cssSelector ("div.notranslate._5rpu");
+		statsbox = this.driver.findElement (statbx);
+		final WebElement post = statsbox.findElement (editBox);
+		post.clear ();
+
+		final char [] chars = status.toCharArray ();
+		for (final char c : chars) {
+			post.sendKeys (Character.toString (c));
+		}
+
 		sleep ();
 
 		final By pbtn = By.tagName ("button");
@@ -52,10 +52,11 @@ public class FbPostStatus {
 		sleep ();
 		System.out.println ("Fb status Posted!!");
 
+		final String profileName = "Your Name"; // Enter the Profile Name here.
 		final By header = By.cssSelector ("._2t-a._50tj");
 		final WebElement hdr = this.driver.findElement (header);
 
-		final By profile = By.linkText ("Mohammad Faisal");
+		final By profile = By.linkText (profileName);
 		final WebElement prfle = hdr.findElement (profile);
 
 		final Actions act = new Actions (this.driver);

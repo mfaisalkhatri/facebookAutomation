@@ -11,18 +11,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * @author DELL
+ * @author Faisal Khatri
  * @since 25-Aug-2017 11:29:10 AM
  */
 public class FbLogOut {
 
 	private static WebDriver driver;
 
-	/**
-	 * @since 25-Aug-2017 11:30:43 AM
-	 */
 	public FbLogOut (final WebDriver driver) {
-		// TODO Auto-generated constructor stub
 		FbLogOut.driver = driver;
 	}
 

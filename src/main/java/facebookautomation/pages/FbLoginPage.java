@@ -30,7 +30,6 @@ public class FbLoginPage {
 
 		final By usrid = By.cssSelector ("#email");
 		final By passw = By.cssSelector ("#pass");
-		// final By loginbtn = By.id("u_0_r");
 		final By loginbtn = By.cssSelector ("#loginbutton");
 
 		final WebElement userid = this.driver.findElement (usrid);
